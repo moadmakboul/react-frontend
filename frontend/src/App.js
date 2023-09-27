@@ -27,9 +27,9 @@ function App() {
                 <Route path='/login' element={<LoginPage />} />
                 <Route path='/cart' element={<Cart />} />
                 <Route path='/register' element={<RegisterPage />} />
-                <Route path='/product'>
+                {/* <Route path='/product'>
                   <Route path=':id' element={<DescriptivePage />} />
-                </Route>
+                </Route> */}
                 <Route path='/checkout' element={<CheckoutPage />} />
                 <Route path='/completion' element={<CompletionPage />} />
               </Routes>
