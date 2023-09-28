@@ -33,4 +33,11 @@
 .slideshowDot.active {
     background-color: #121013;
 }
+
+/* responsive */
+@media only screen and (max-width: 600px){
+    .slide {
+        height: 200px;
+    }
+}
   

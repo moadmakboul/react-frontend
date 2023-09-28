@@ -115,12 +115,12 @@ export const LoginContextProvider = ({children}) => {
                 localStorage.setItem('authTokens', JSON.stringify(data))
                 setUser(jwtDecode(data.access))
             }
-            else {
+            if (response.status === 400) {
                 setAuthTokens(null)
                 localStorage.removeItem('authTokens')
                 setUser(null)
-                
             }
+
         } catch( error){
             console.log(error);
         }
@@ -128,9 +128,11 @@ export const LoginContextProvider = ({children}) => {
     }
 
     useEffect(()=> {
-
+        let fetch = true
         if(loading){
-            updateToken()
+            if (fetch){
+                updateToken()
+            }
         }
 
         let fourMinutes = 1000 * 60 * 4
@@ -140,7 +142,11 @@ export const LoginContextProvider = ({children}) => {
                 updateToken()
             }
         }, fourMinutes)
-        return ()=> clearInterval(interval)
+
+        return ()=> {
+            clearInterval(interval)
+            fetch = false
+        }
 
     }, [authTokens, loading])
 
@@ -159,7 +165,7 @@ export const LoginContextProvider = ({children}) => {
 
     return(
         <LoginContext.Provider value={contextData}>
-            {loading? <h1>Loading</h1> : children}
+            {!loading && children}
         </LoginContext.Provider>
     )
 }

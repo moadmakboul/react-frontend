@@ -9,7 +9,6 @@
 .logo {
     height: 70px;
     margin: auto 0;
-    
 }
 
 .logo img {
@@ -28,6 +27,7 @@
 .nav-list li {
     list-style: none;
     margin: auto 20px;
+    width: max-content;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-size: large;
 }
@@ -46,12 +46,17 @@
 }
 
 .account-tab {
-    padding-left: 10px;
     padding-top: 25px;
     height: 100%;
-    position: relative;
     cursor: pointer;
-    display: inline-block;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+}
+
+#icon-account {
+    padding-right: 3px;
 }
 
 .dropdown {
@@ -70,15 +75,11 @@
     display: block;
 }
 
-#icon-account {
-    position: absolute;
-    right: 70px;
-}
-
 .dropdown li {
     list-style: none;
     border-bottom: 1px solid rgb(202, 201, 201);
-    margin: 20px 10px;
+    margin: 20px auto;
+    width: 80%;
     text-align: center;
     padding: 5px 0px;
 }
@@ -127,4 +128,15 @@
     color: white;
     font-size: small;
     clip-path: circle();
+}
+
+/* Responsive */
+@media only screen and (max-width: 600px) {
+    .dropdown {
+        width: 150px;
+        right: -20px;
+    }
+    .logo {
+        margin-left: 10px;
+    }
 }

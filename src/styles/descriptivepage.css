@@ -105,3 +105,31 @@
     width: 70%;
     margin: 20px auto;
 }
+
+/* responsive */
+@media only screen and (max-width: 600px){
+    .overview {
+        flex-direction: column;
+        width: 90%;
+    }
+    .product-image-description {
+        width: 80%;
+        height: auto;
+        margin: 10px auto;
+        border: none;
+    }
+    .product-information {
+        padding: 20px 10px;
+        width: 100%;
+    }
+    .product-information h1 {
+        font-size: 30px;
+    }
+    .descriptive-table {
+        width: 90%;
+        margin-top: -40px;
+    }
+    .add-information {
+        width: 90%;
+    }
+}

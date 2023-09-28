@@ -3,10 +3,12 @@ import { ShopContext } from '../context/ShopContext';
 import { LoginContext } from '../context/LoginContext';
 import {BsCart4} from 'react-icons/bs'
 import CartProduct from './components/CartProduct';
+import LoadingGif from '../assets/Spinner-1s-200px.gif'
 import '../styles/cartpage.css'
 
 const Cart = () => {
     const {cartedProducts, 
+        loadingPage,
         getCart, 
         cartIsUpdated,
         cartTotalPrice, 
@@ -14,7 +16,7 @@ const Cart = () => {
         putItemInCart
     } = useContext(ShopContext)
 
-    const {authTokens, user} = useContext(LoginContext)
+    const {authTokens} = useContext(LoginContext)
 
     useEffect(()=>{
       if (authTokens){
@@ -24,7 +26,8 @@ const Cart = () => {
     
     return (
         <div className='cart'>
-            {cartedProducts.length !== 0? (
+            {authTokens && loadingPage && <div className='spinner'><img src={LoadingGif} alt='' /></div>}
+            {!loadingPage && (
                 <>
                     <div className='products'>
                         {cartedProducts.map((product)=>(
@@ -44,8 +47,8 @@ const Cart = () => {
                         <button><a href="/checkout">Checkout</a></button>
                     </div>
                 </>
-
-            ): (
+            )}
+            {!authTokens && (
                 <div className='empty-cart'>
                     <div className='cart-icon-empty'>
                         <BsCart4 size={200} />

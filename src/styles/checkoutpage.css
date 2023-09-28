@@ -79,3 +79,23 @@ h3 span{
     color: white;
     font-weight: 600;
 }
+
+/* responsive */
+@media only screen and (max-width: 600px){
+    .checkout {
+        width: 90%;
+        flex-direction: column;
+    }
+    .receipt{
+        width: 90%;
+        padding: 10px 20px;
+        margin: 0px auto;
+    }
+    .checkout-product-box {
+        width: 90%;
+    }
+    .payment-section{
+        width: 90%;
+        margin: 20px auto;
+    }
+}

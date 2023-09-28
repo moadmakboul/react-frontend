@@ -94,3 +94,29 @@ form input {
     margin-top: 20px;
     font-weight: 600;
 }
+
+/* responsive */
+@media only screen and (max-width: 600px){
+    .signin {
+        width: 90%;
+        flex-direction: column;
+        margin: 50px auto;
+    }
+    .inputs {
+        width: 100%;
+        padding-right: 0px;
+        border-right: none;
+    }
+    .create-section {
+        width: 90%;
+        margin-top: 30px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .create-section button{
+        width: 300px;
+        height: 30px;
+        margin: 30px auto;
+        display: block;
+    }
+}

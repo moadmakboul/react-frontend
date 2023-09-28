@@ -21,7 +21,7 @@ const Navbar = () => {
                     <li><a href="/">Home</a></li>
                     <li id='cart'><a href="/cart"><span id='cart-count' style={{backgroundColor: cartCountItem > 0 && 'red'}}>{cartCountItem !== null ? cartCountItem: 0}</span><BsCart  /> Cart</a></li>
                     <li className='account-tab'>
-                        <VscAccount size={20} id='icon-account' />{user? user.username:'Account'} <i className="arrow down"></i>
+                        <VscAccount size={20} id='icon-account' />{user? user.username:'Account'}
                         <Dropdown user={user} logout={logout}/>
                     </li>
                 </ul>

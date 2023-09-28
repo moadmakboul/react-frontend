@@ -155,3 +155,26 @@ button a {
 .cart-icon-empty {
     margin: 30px 100px;
 }
+
+/* responsive */
+@media only screen and (max-width: 600px){
+    .cart {
+        flex-direction: column;
+        width: 90%;
+    }
+    .cart-product {
+        width: 100%;
+        margin: 0px auto;
+        margin-bottom: 20px;
+    }
+    .cart-product h2 {
+        font-size: large;
+    }
+    .pricelist-section {
+        padding-left: 0px;
+        padding-right: 0px;
+        margin-left: 0px;
+        border-left: none;
+    }
+    
+}

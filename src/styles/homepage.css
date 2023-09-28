@@ -12,3 +12,12 @@
     justify-content: flex-start;
     padding-left: 70px;
 }
+
+/* responsive */
+@media only screen and (max-width: 600px){
+    #box-products {
+        flex-direction: column;
+        align-items: center;
+        padding: 0;
+    }
+}

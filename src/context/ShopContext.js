@@ -13,6 +13,7 @@ export const ShopContextProvider = ({children}) => {
     const [cartTotalPrice, setCartTotalPrice] = useState(0)
     const [product, setProduct] = useState([])
     const [loading , setLoading] = useState(true)
+    const [loadingPage, setLoadingPage] = useState(true)
     const [history, setHistory] = useState([])
 
     // Display all products in inventory
@@ -22,6 +23,7 @@ export const ShopContextProvider = ({children}) => {
 
         if (response.status === 200){
             setProducts(data)
+            setLoadingPage(false)
         }
 
         if (loading){
@@ -46,6 +48,7 @@ export const ShopContextProvider = ({children}) => {
             setCartedProducts(data)
             dataToDisplay(data)
             calculatePrice(data)
+            setLoadingPage(false)
             
             if(cartIsUpdated){
                 setCartIsUpdated(false)
@@ -168,6 +171,7 @@ export const ShopContextProvider = ({children}) => {
         cartIsUpdated: cartIsUpdated,
         cartTotalPrice: cartTotalPrice,
         history: history,
+        loadingPage: loadingPage,
         productsToDisplay: productsToDisplay,
         getCart: getCart,
         putItemInCart: putItemInCart,
