@@ -97,9 +97,6 @@ export const LoginContextProvider = ({children}) => {
     }
 
     const updateToken = async () => {
-        if (loading){
-            setLoading(false)
-        }
         try {
             let response = await fetch('https://e-market-z2s5.onrender.com/users/api/token/refresh/',{
                 method:'POST',
@@ -115,10 +112,13 @@ export const LoginContextProvider = ({children}) => {
                 localStorage.setItem('authTokens', JSON.stringify(data))
                 setUser(jwtDecode(data.access))
             }
-            if (response.status === 400) {
+            else{
                 setAuthTokens(null)
                 localStorage.removeItem('authTokens')
                 setUser(null)
+            }
+            if (loading){
+                setLoading(false)
             }
 
         } catch( error){
@@ -128,11 +128,12 @@ export const LoginContextProvider = ({children}) => {
     }
 
     useEffect(()=> {
-        let fetch = true
-        if(loading){
-            if (fetch){
-                updateToken()
-            }
+        if(loading && authTokens !== null){
+            updateToken()
+        }
+
+        if (authTokens === null) {
+            setLoading(false)
         }
 
         let fourMinutes = 1000 * 60 * 4
@@ -145,7 +146,6 @@ export const LoginContextProvider = ({children}) => {
 
         return ()=> {
             clearInterval(interval)
-            fetch = false
         }
 
     }, [authTokens, loading])

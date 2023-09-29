@@ -21,7 +21,12 @@ const HomePage = () => {
     }, [authTokens, cartedProducts.length, status])
 
     useEffect(()=>{
-        productsToDisplay()
+        let fetched = true
+        if (fetched){
+            console.log('trigged');
+            productsToDisplay()
+        }
+        return () => {fetched = false}
     }, [])
    
     return (
